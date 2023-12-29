@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+#catalogoCanciones {
+    max-width: 600px;
+    margin: auto;
+}
+
+.cancionItem {
+    border: 1px solid #000000;
+    margin-bottom: 10px;
+}

@@ -15,8 +15,6 @@ body {
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-    .modal-content {
-        max-width: 100%;
-    }
-}
+
+
+

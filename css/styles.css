@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300&display=swap');
 body {
-    margin: 0;
-    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
     font-family: 'Kanit', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 #catalogoCanciones {
@@ -11,6 +14,26 @@ body {
 }
 
 .cancionItem {
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
     margin-bottom: 10px;
+    padding: 10px;
+    background-color: #232323;
+}
+
+.cancionItem strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.btn-play {
+    background-color: #1DB954;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    float: right;
+}
+
+footer {
+    margin-top: auto;
 }

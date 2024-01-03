@@ -14,9 +14,11 @@
         <h1>registro</h1>
         <form id="formRegis">
             <label for="">Nombre:</label>
-            <input type="text" id="username">
+            <input type="text" id="username" required minlength="5" max="30">
+            <label for="">E-mail:</label>
+            <input type="text" name="" id="email" required minlength="10" max="30">
             <label for="">Constraseña:</label>
-            <input type="password" id="password">
+            <input type="password" id="password" required minlength="5">
             <button type="submit" value="Ingresar">Iniciar sesión</button>
         </form>
         <p>¿Tienes cuenta?<a href="../index.html">Ingresar</a></p>

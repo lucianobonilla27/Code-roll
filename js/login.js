@@ -3,20 +3,27 @@ const formLog = document.querySelector('#formLogin')
 formLog.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    const username = document.getElementById("username").value
+    const email = document.getElementById("email").value
     const password = document.getElementById("password").value
-        console.log(username, password)
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const existe = pattern.test(email)
 
-        fetch("../api/fakeApi.json")
+        console.log(email, password)
+
+        if(existe){
+            fetch("../api/fakeApi.json")
         .then((response) => response.json())
         .then((user) => {
-            console.log(user)
             const userLogued = user.find(
-                (user) => user.username === username && user.password === password
+                (user) => user.password === password && user.email === email
             )
-            
+
+            if(email=== "admin@gmail.com"){
+                window.location.href = "../html/admin.html"
+            }
+
             const users = JSON.parse(localStorage.getItem("users")) || []
-            const userValid = users.find(users => users.username == username)
+            const userValid = users.find(users => users.email == email)
 
 
             if(userLogued || userValid){
@@ -29,6 +36,10 @@ formLog.addEventListener('submit', (e) => {
             
             
         })
+        }
+        else{
+            alert("Correo electronico no valido")
+        }
             
 })
 

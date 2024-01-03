@@ -5,9 +5,14 @@ formRegis.addEventListener('submit', (e) => {
 
     const username = document.getElementById("username").value
     const password = document.getElementById("password").value
-        console.log(username, password)
+    const email = document.getElementById("email").value
+    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const existe = pattern.test(email)
 
-        fetch("../api/fakeApi.json")
+        console.log(username, password, email)
+
+        if(existe){
+            fetch("../api/fakeApi.json")
         .then((response) => response.json())
         .then((user) => {
             console.log(user)
@@ -24,7 +29,7 @@ formRegis.addEventListener('submit', (e) => {
                 bandera = 1
             }
 
-            users.push({username: username, password: password})
+            users.push({username: username, email: email, password: password})
             localStorage.setItem("users", JSON.stringify(users))
 
             if(bandera !== 1){
@@ -32,6 +37,10 @@ formRegis.addEventListener('submit', (e) => {
             }
             
         })
+        }
+        else{
+            alert("Correo electronico no valido")
+        }
 
 
 })

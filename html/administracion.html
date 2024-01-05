@@ -11,25 +11,27 @@
 
 <body>
     <div class="container mt-5">
-        <h2>Página de Administración</h2>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal">
+        <h2 class="text-center">Página de Administración</h2>
+        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#agregarModal">
             Agregar Canción
         </button>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Título</th>
-                    <th>Artista</th>
-                    <th>Categoría</th>
-                    <th>Imagen</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="adminTableBody">
-                <!-- Aquí se llenará dinámicamente la tabla -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Título</th>
+                        <th>Artista</th>
+                        <th>Categoría</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody">
+                    <!-- Aquí se llenará dinámicamente la tabla -->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Formulario para agregar Canción -->

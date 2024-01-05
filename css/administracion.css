@@ -1,0 +1,8 @@
+.imagen-cancion {
+    max-width: 100px;
+    height: auto; 
+}
+
+td,th {
+    vertical-align: middle;
+}

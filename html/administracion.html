@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/administracion.css">
+    <title>Administración</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>Página de Administración</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarModal">
+            Agregar Canción
+        </button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Título</th>
+                    <th>Artista</th>
+                    <th>Categoría</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="adminTableBody">
+                <!-- Aquí se llenará dinámicamente la tabla -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulario para agregar Canción -->
+    <!-- Button trigger modal -->
+    
+
+    <!-- Modal Agregar canción  -->
+    <div class="modal fade" id="agregarModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Canción</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="agregarForm">
+                        <div class="form-group">
+                            <label for="titulo">Título:</label>
+                            <input type="text" class="form-control" id="titulo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="artista">Artista:</label>
+                            <input type="text" class="form-control" id="artista" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoría:</label>
+                            <input type="text" class="form-control" id="categoria" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagenUrl">URL de la Imagen:</label>
+                            <input type="text" class="form-control" id="imagenUrl" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracion">Duración:</label>
+                            <input type="text" class="form-control" id="duracion" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cancionUrl">URL de la Canción:</label>
+                            <input type="text" class="form-control" id="cancionUrl" required>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" onclick="Administracion.guardarCancion()" data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario Modal para Editar Canción -->
+    <div class="modal fade" id="editarModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Editar Canción</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+
+                </div>
+                <div class="modal-body">
+                    <form id="cancionForm">
+                        <div class="form-group">
+                            <label for="titulo">Título:</label>
+                            <input type="text" class="form-control" id="tituloE" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="artista">Artista:</label>
+                            <input type="text" class="form-control" id="artistaE" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoría:</label>
+                            <input type="text" class="form-control" id="categoriaE" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagenUrl">URL de la Imagen:</label>
+                            <input type="text" class="form-control" id="imagenUrlE" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="duracion">Duración:</label>
+                            <input type="text" class="form-control" id="duracionE" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cancionUrl">URL de la Canción:</label>
+                            <input type="text" class="form-control" id="cancionUrlE" required>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancelarButton">Cancelar</button>
+                        <button type="button" class="btn btn-primary" onclick="Administracion.guardarCancion()" id="guardarButton" data-bs-dismiss="modal">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de jQuery y Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="../js/administracion.js"></script>
+</body>
+
+</html>

@@ -88,30 +88,37 @@ const Administracion = {
         const adminTableBody = document.getElementById('adminTableBody');
         if (adminTableBody) {
             adminTableBody.innerHTML = '';
-
+    
             this.canciones.forEach(cancion => {
                 const row = adminTableBody.insertRow();
                 row.insertCell(0).textContent = cancion.codigo;
                 row.insertCell(1).textContent = cancion.titulo;
                 row.insertCell(2).textContent = cancion.artista;
                 row.insertCell(3).textContent = cancion.categoria;
-
+    
                 const imagenCell = row.insertCell(4);
                 const imagen = document.createElement('img');
                 imagen.src = cancion.imagenUrl;
                 imagen.alt = cancion.titulo;
                 imagen.classList.add('imagen-cancion');
                 imagenCell.appendChild(imagen);
-
+    
                 const accionesCell = row.insertCell(5);
-                
+    
+                // Botón Reproducir
+                const reproducirButton = document.createElement('button');
+                reproducirButton.textContent = 'Reproducir';
+                reproducirButton.classList.add('btn', 'btn-success', 'btn-sm');
+                reproducirButton.onclick = () => this.reproducirCancion(cancion.cancionUrl);
+                accionesCell.appendChild(reproducirButton);
+    
                 // Botón Editar
                 const editarButton = document.createElement('button');
                 editarButton.textContent = 'Editar';
                 editarButton.classList.add('btn', 'btn-warning', 'btn-sm');
                 editarButton.onclick = () => this.abrirFormularioEditar(cancion);
                 accionesCell.appendChild(editarButton);
-
+    
                 // Botón Eliminar
                 const eliminarButton = document.createElement('button');
                 eliminarButton.textContent = 'Eliminar';
@@ -121,6 +128,31 @@ const Administracion = {
             });
         }
     },
+    
+    reproducirCancion: function (urlCancion) {
+        // Elimina cualquier iframe existente
+        var existingIframe = document.getElementById('soundcloudIframe');
+        if (existingIframe) {
+            existingIframe.parentNode.removeChild(existingIframe);
+        }
+    
+        // Reemplaza el enlace de SoundCloud con el enlace de tu canción
+        var soundcloudEmbedUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(urlCancion) + "&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
+    
+        // Crea un nuevo iframe para el widget de SoundCloud
+        var iframe = document.createElement('iframe');
+        iframe.id = 'soundcloudIframe';
+        iframe.width = "100%";
+        iframe.height = "300";
+        iframe.frameBorder = "no";
+        iframe.allow = "autoplay";
+        iframe.src = soundcloudEmbedUrl;
+    
+        // Agrega el nuevo iframe al cuerpo del documento
+        document.body.appendChild(iframe);
+    },
+    
+    
 
     abrirFormularioEditar: function (cancion) {
         
@@ -192,7 +224,7 @@ if (Administracion.canciones.length === 0) {
             categoria: "Rock",
             imagenUrl: "https://imageio.forbes.com/blogs-images/simonthompson/files/2018/12/queen_large_2500-1200x1203.jpg?height=712&width=711&fit=bounds",
             duracion: "5:55",
-            cancionUrl: "https://ejemplo.com/bohemian-rhapsody.mp3",
+            cancionUrl: "https://soundcloud.com/rizky-rilos/queen-bohemian-rhapsody?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
         },
         {
             codigo: Cancion.generarCodigo(),
@@ -201,7 +233,7 @@ if (Administracion.canciones.length === 0) {
             categoria: "Pop",
             imagenUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Shape_Of_You_%28Official_Single_Cover%29_by_Ed_Sheeran.png/220px-Shape_Of_You_%28Official_Single_Cover%29_by_Ed_Sheeran.png",
             duracion: "3:54",
-            cancionUrl: "https://ejemplo.com/shape-of-you.mp3",
+            cancionUrl: "https://soundcloud.com/jamescarterpresents/shape-of-you?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
         },
         {
             codigo: Cancion.generarCodigo(),
@@ -210,7 +242,16 @@ if (Administracion.canciones.length === 0) {
             categoria: "Pop",
             imagenUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQodev9KYKKJg_pXgiAVs5pT00VbTtqGGn01lsDuhjosw&s",
             duracion: "4:54",
-            cancionUrl: "https://ejemplo.com/billie-jean.mp3",
+            cancionUrl: "https://soundcloud.com/maitre80/billie-jean-michael-jackson?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        },
+        {
+            codigo: Cancion.generarCodigo(),
+            titulo: "Payphone",
+            artista: "Maroon 5(feat. Wiz Khalifa)",
+            categoria: "Pop",
+            imagenUrl: "https://cdns-images.dzcdn.net/images/cover/81d7aae96ab55297abdfd5370f6b38a0/350x350.jpg",
+            duracion: "3:51",
+            cancionUrl: "https://soundcloud.com/maroon-5/payphone?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
         },
     ];
 

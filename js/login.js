@@ -19,7 +19,7 @@ formLog.addEventListener('submit', (e) => {
             )
 
             if(email=== "admin@gmail.com"){
-                window.location.href = "../html/admin.html"
+                window.location.href = "../html/administracion.html"
             }
 
             const users = JSON.parse(localStorage.getItem("users")) || []

@@ -1,13 +1,5 @@
-const canciones = [
-    { id: 1, nombre: "MONACO", cantante: "Bad Bunny", url: "https://open.spotify.com/intl-es/track/4MjDJD8cW7iVeWInc2Bdyj?si=a600975158b743c0"},
-    { id: 2, nombre: "VOU 787", cantante: "Bad Bunny", url: "https://open.spotify.com/intl-es/track/0rDQZJtSGgsB2rdkObpdFa?si=b4270e65aec0493b"},
-    { id: 3, nombre: "Fruto", cantante: "Milo J", url: "https://open.spotify.com/intl-es/track/4SW9gHnW8NfKOdqmh0ij45?si=bcb689b973d04161"},
-    { id: 4, nombre: "hArAkIrI", cantante: "Duki", url: "https://open.spotify.com/intl-es/track/4m0ypZ1c1l0WulMk3fkVA0?si=4f87473b98c4458f" },
-    { id: 5, nombre: "GIVENCHY", cantante: "Duki", url: "https://open.spotify.com/intl-es/track/6bTVP50bbtMtD6RGe2cUoQ?si=d3937a46d4c2419e" },
-    { id: 6, nombre: "Life is Good", cantante: "Drake", url: "https://open.spotify.com/intl-es/track/1K5KBOgreBi5fkEHvg5ap3?si=54a3ce4477944155" },
-    { id: 7, nombre: "Bad and Boujee", cantante: "Migos", url: "https://open.spotify.com/intl-es/track/0M9ydKzuF3oZTfYYPfaGX1?si=f00b2d7b9d404b74" },
-    { id: 8, nombre: "a lot", cantante: "21 savage", url: "https://open.spotify.com/intl-es/track/2t8yVaLvJ0RenpXUIAC52d?si=ab3d3a2d4a404636" },
-];
+// Obtener canciones desde localStorage
+const canciones = JSON.parse(localStorage.getItem('canciones')) || [];
 
 function cargarCatalogo() {
     const catalogoCanciones = document.getElementById("catalogoCanciones");
@@ -16,20 +8,37 @@ function cargarCatalogo() {
     canciones.forEach((cancion) => {
         const li = document.createElement("li");
         li.className = "cancionItem";
-        li.innerHTML = `<strong>${cancion.nombre}</strong> - ${cancion.cantante}`;
+
+        // Crea un enlace al detalle de la canción con el código de la canción como parámetro
+        const enlace = document.createElement("a");
+        enlace.href = `detalle.html?codigo=${cancion.codigo}`;
+        enlace.innerHTML = `<strong>${cancion.titulo}</strong>`;
+
+        // Agrega el guión como texto después del enlace
+        const textoGuion = document.createTextNode(" - ");
+        li.appendChild(enlace);
+        li.appendChild(textoGuion);
+
+        // Agrega el texto del artista después del guión
+        const textoArtista = document.createTextNode(cancion.artista);
+        li.appendChild(textoArtista);
 
         const boton = document.createElement("button");
         boton.textContent = 'Reproducir';
         boton.className = 'btn btn-play';
 
         boton.addEventListener('click', () => {
-            window.open(cancion.url, '_blank');
+            reproducirCancion(cancion.cancionUrl);
         });
 
         li.appendChild(boton);
         catalogoCanciones.appendChild(li);
     });
 }
+
+
+
+
 
 function buscar() {
     const busquedaInput = document.getElementById("busquedaInput").value.toLowerCase();
@@ -38,17 +47,17 @@ function buscar() {
 
     for (let i = 0; i < canciones.length; i++) {
         const cancion = canciones[i];
-        if (cancion.nombre.toLowerCase().includes(busquedaInput) || cancion.cantante.toLowerCase().includes(busquedaInput)) {
+        if (cancion.titulo.toLowerCase().includes(busquedaInput) || cancion.artista.toLowerCase().includes(busquedaInput)) {
             const li = document.createElement("li");
             li.className = "cancionItem";
-            li.innerHTML = `<strong>${cancion.nombre}</strong> - ${cancion.cantante}`;
+            li.innerHTML = `<strong>${cancion.titulo}</strong> - ${cancion.artista}`;
 
             const boton = document.createElement("button");
             boton.textContent = 'Reproducir';
             boton.className = 'btn btn-play';
 
             boton.addEventListener('click', () => {
-                window.open(cancion.url, '_blank');
+                reproducirCancion(cancion.cancionUrl);
             });
 
             li.appendChild(boton);
@@ -57,7 +66,37 @@ function buscar() {
     }
 }
 
+// Reproduce la canción utilizando un widget de SoundCloud
+function reproducirCancion(urlCancion) {
+    // Elimina cualquier iframe existente
+    var existingIframe = document.getElementById('soundcloudIframe');
+    if (existingIframe) {
+        existingIframe.parentNode.removeChild(existingIframe);
+    }
 
+    // Reemplaza el enlace de SoundCloud con el enlace de tu canción
+    var soundcloudEmbedUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(urlCancion) + "&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
+
+    // Crea un nuevo iframe para el widget de SoundCloud
+    var iframe = document.createElement('iframe');
+    iframe.id = 'soundcloudIframe';
+    iframe.width = "100%";
+    iframe.height = "100";
+    iframe.allow = "autoplay";
+    iframe.src = soundcloudEmbedUrl;
+
+    // Establece la posición fija y la alineación en la parte inferior
+    iframe.style.position = "fixed";
+    iframe.style.bottom = "0";
+    iframe.style.left = "0";
+
+    // Agrega el nuevo iframe al cuerpo del documento
+    document.body.appendChild(iframe);
+}
+
+
+// Llama a cargarCatalogo para inicializar la página
 cargarCatalogo();
 
+// Agrega un event listener para la búsqueda
 document.getElementById("busquedaInput").addEventListener("input", buscar);

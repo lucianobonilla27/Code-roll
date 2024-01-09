@@ -11,7 +11,7 @@ function cargarCatalogo() {
 
         // Crea un enlace al detalle de la canción con el código de la canción como parámetro
         const enlace = document.createElement("a");
-        enlace.href = `detalle.html?codigo=${cancion.codigo}`;
+        enlace.href = `../html/detalle.html?codigo=${cancion.codigo}`;
         enlace.innerHTML = `<strong>${cancion.titulo}</strong>`;
 
         // Agrega el guión como texto después del enlace
@@ -62,9 +62,17 @@ function buscar() {
 
             li.appendChild(boton);
             catalogoCanciones.appendChild(li);
+
+            // Vincula el enlace al detalle de la canción
+            const enlace = document.createElement("a");
+            enlace.href = `../html/detalle.html?codigo=${cancion.codigo}`;
+            enlace.innerHTML = li.innerHTML; // Copia el contenido del li al enlace
+            li.innerHTML = ""; // Limpia el contenido del li
+            li.appendChild(enlace);
         }
     }
 }
+ 
 
 // Reproduce la canción utilizando un widget de SoundCloud
 function reproducirCancion(urlCancion) {

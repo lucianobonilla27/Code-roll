@@ -18,7 +18,7 @@ formLog.addEventListener('submit', (e) => {
                 (user) => user.password === password && user.email === email
             )
 
-            if(email=== "admin@gmail.com"){
+            if(email=== "admin@gmail.com" && password === "admin"){
                 window.location.href = "../html/administracion.html"
             }
 

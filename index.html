@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Catálogo de Canciones</title>
+</head>
+
+<body class="bg-dark">
+    <!-- Inicio header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+            <a class="navbar-brand" href="#">CODE&ROLL</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Servicios</a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./html/login.html"><button class="btn btn-dark" type="button">Iniciar sesión</button></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Fin de header -->
+    <main>
+        <div class="container mt-5">
+            <!-- Encabezado -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <h1 class="text-center text-black">Catálogo de Canciones</h1>
+                </div>
+            </div>
+            <!-- Filtro de Búsqueda -->
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="busquedaInput" placeholder="Buscar por artista.">
+                            <div class="input-group-append">
+                                <button class="btn btn-light" type="button" onclick="buscar()">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Lista de Canciones -->
+            <div class="row">
+                <div class="col-12">
+                    <ul id="catalogoCanciones" class="list-group text-black">
+                        <li>
+                            Nombre de la canción
+                            <button type="button" class="btn btn-play btn-light">Reproducir</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gradient text-light text-center my-5 py-3">
+        <p>
+            <a href="#" class="text-light">Acerca de nosotros</a>
+            <span class="mx-2">|</span>
+            <a href="#" class="text-light">Soporte</a>
+            <span class="mx-2">|</span>
+            <a href="#" class="text-light">Comentarios</a>
+        </p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
+

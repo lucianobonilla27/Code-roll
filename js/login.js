@@ -28,8 +28,8 @@ formLog.addEventListener('submit', (e) => {
 
             if(userLogued || userValid){
                 alert('Bienvenido')
-                sessionStorage.setItem ("invitado", JSON.stringify (users))                 //agregado para playlist
-                window.location.href = "../html/principal.html"
+                sessionStorage.setItem ('invitado', JSON.stringify (users))     //agregado para playlist
+                window.location.href = "../html/pagPlay.html"
                 
                 
             }

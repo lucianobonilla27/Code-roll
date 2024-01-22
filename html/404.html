@@ -9,34 +9,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="bg-dark">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-            <div class="container pt-2">
-                <a class="navbar-brand" href="#">Logo</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link headerLink" href="#">Inicio</a>
-                            </li>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link headerLink" href="#">Servicios</a>
-                            </li>
-                            </li>
-                            <li class="nav-item headerLink">
-                                <button class="btn btn-sz-primary" type="button">Iniciar sesión</button>
-                            </li>
-                        </ul>
+    <body class="bg-dark">
+        <!-- Inicio header -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-gradient">
+                <div class="container-fluid">
+                    <div class="navbar-brand me-lg-5">
+                        <!-- Imagen para celu -->
+                        <a class="d-lg-none" href="#"><img
+                            src="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg" class="logoImagen sombra-verde" alt="" height
+                            75></a>
+                        <!-- Imagen para escritorio -->
+                        <a class="d-none d-lg-block" href="#"><img
+                            src="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg" class="logoImagen sombra-verde" alt="" height
+                            75></a>
+                        </div>
+                    <div class="mx-lg-auto">
+                        <a class="nombrePagina navbar-brand" href="#">CODE&ROLL</a>
                     </div>
-                    </ul>
+                    <div class="ms-lg-3">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                            <ul class="linksPrimarios navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Servicios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href=""><button class="btn btn-dark" type="button">Iniciar sesión</button></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
    <main>
     <section>
         <div class="main container bg-dark">
@@ -45,7 +57,7 @@
                 
                 <div class="col-12 col-sm-12 col-md-12 col-lg-6">
                     <div class="mainImg text-center text-light">
-                        <img src="../images/error404.png" alt="Main" class="img-fluid pb-3">
+                        <img src="../src/img/error404.png" alt="Main" class="img-fluid pb-3">
 
                         <h2>Not Found</h2>
                         <p class="mainDescription pt-2">Lo sentimos, no se pudo encontrar la página que solicitó. Vuelva a la página de inicio.</p>

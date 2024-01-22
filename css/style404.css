@@ -1,12 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;1,300&display=swap');
-body{
+
+body {
+    background-color: #121212;
+    color: #ffffff;
     font-family: 'Kanit', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.headerLink{
+.navbar {
+    background-color: #232323;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff;
+    transition: color 0.5s;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #1DB954;
+}
+
+.logoImagen {
+    height: 75px; 
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px green;
+}
+
+.btn-dark {
+    background-color: #1DB954;
+    border: none;
+    transition: background-color 0.5s;
+}
+
+.btn-dark:hover {
+    background-color: #ffffff;
+    color: #1DB954;
+}
+
+/* .headerLink{
     font-size: 15px;
     margin-left: 20px;
     color: black !important;
@@ -14,7 +53,7 @@ body{
 
 .headerLink:hover{
     color: #34d796 !important;
-}
+} */
 
 .mainImg{
     padding-top: 8%;
@@ -32,6 +71,36 @@ body{
     background-color: #34d796 !important;
 }
 
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 70px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    color: #1DB954;
+  }
+
+  .fa {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fa:hover {
+    transform: scale(2);
+}
+
 footer {
     margin-top: auto;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px 0;
+    background-color: #232323;
+    color: #ffffff;
 }

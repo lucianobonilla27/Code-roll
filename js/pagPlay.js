@@ -9,52 +9,32 @@ if (invitado)  {
     
     alert ("coincide!!");
     
-    function agregarAplaylist (){
+    function agregarAplaylist(){
         
-        const cancionAgregada = document.getElementById ("cancionAgregada").value;
-        const listaCanciones = JSON.parse (localStorage.getItem ("canciones")) || [];  //Obtengo las canciones que estan en la lista
-
-        console.log (listaCanciones)  //como hago para acceder solo al TITULO de la cancion, para que dps abajo se pueda comparar.
-        
-
-        //Busca si la cancion ya existe en la playlist 
-        const coincideCancion = listaCanciones.find (function(c){
-            return c === cancionAgregada
-        });
-        console.log (coincideCancion) 
-
-    
-
-             if (!invitado.includes (cancionAgregada)){
-
-                listaCanciones.push (cancionAgregada);
-                sessionStorage.setItem (invitado, JSON.stringify (cancionAgregada))  //puedo poner invitado de nuevo, y que me "agregue" datos? o tengo que poner una llave nueva
-                console.log ("la cancion se agrego a la playlist")
-                mostrarPlaylist ();
-
-            } 
-
-    }
-    }
-    else {
-        alert ("no coincide")
-    }
+        const cancionAgregada = document.getElementById ("cancionAgregada");
+        let playlist = JSON.parse(sessionStorage.getItem ("playlist")) || [];
+        playlist.push (cancionAgregada) //agregar el id de la cancion a la playlist
+        sessionStorage.setItem ("playlist", JSON.stringify (playlist));  // guardo la playlist actualizada en la sesion 
+        mostrarPlaylist ();
+    }}
 
     function mostrarPlaylist (){
 
-        document.getElementById ("detalle-playlist").value;
-        for (let i=0; i<  listaCanciones.length; i++){
-            const cancion = listaCanciones[i];
-            const cancionEnPlaylist = document.createElement ("li");
-            cancionEnPlaylist.textContent = cancion;
-            listaCanciones.appendChild (cancionEnPlaylist)
-        }
+        const playlist = JSON.parse (sessionStorage.getItem ("playlist")) || [];   //obtengo la playlist desde la sesion
+        const playListDiv = document.getElementById ("detalle-playlist");
+        playListDiv.innerHTML ="";   // limpio el contenido del div donde estara la playlist
 
+        for (let i=0; i< playlist.length; i++){
+        const cancion = playlist[i];
+        const cancionEnPlaylist = document.createElement ("li");
+        cancionEnPlaylist.textContent = cancion;
+        playListDiv.appendChild (cancionEnPlaylist);
+        
     }
+}
 
 
-        
-        
+
 
     
     

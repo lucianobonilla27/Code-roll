@@ -31,7 +31,7 @@ formLog.addEventListener('submit', (e) => {
 
                 sessionStorage.setItem ("invitado", JSON.stringify(email)) ;    //agregado para playlist
                 
-                window.location.href = "../html/pagPlay.html"
+                window.location.href = "../html/playlist.html"
                 
                 
             }

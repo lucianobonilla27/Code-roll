@@ -11,7 +11,7 @@ function cargarCatalogo() {
 
         // Crea un enlace al detalle de la canción con el código de la canción como parámetro
         const enlace = document.createElement("a");
-        enlace.href = `detalle.html?codigo=${cancion.codigo}`;
+        enlace.href = `html/detalle.html?codigo=${cancion.codigo}`;
         enlace.innerHTML = `<strong>${cancion.titulo}</strong>`;
 
         // Agrega el guión como texto después del enlace

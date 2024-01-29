@@ -1,5 +1,5 @@
 body {
-    background-color: #343a40; /* Color de fondo similar al de la imagen */
+    background-color: #121212;
     color: #fff;
   }
   .plan-card {
@@ -32,7 +32,7 @@ body {
   }
   .yellow {
     background-color: #ffc107;
-    color: #343a40; /* Cambiar el color del texto para contraste */
+    color: #343a40;
   }
   @media (max-width: 768px) {
     .plan-card {

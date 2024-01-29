@@ -50,7 +50,7 @@ function buscar() {
     const busquedaInput = document.getElementById("busquedaInput").value.toLowerCase();
     const catalogoCanciones = document.getElementById("catalogoCanciones");
     catalogoCanciones.innerHTML = "";
-
+    
     for (let i = 0; i < canciones.length; i++) {
         const cancion = canciones[i];
         if (cancion.titulo.toLowerCase().includes(busquedaInput) || cancion.artista.toLowerCase().includes(busquedaInput)) {
@@ -79,7 +79,7 @@ function reproducirCancion(urlCancion) {
     if (existingIframe) {
         existingIframe.parentNode.removeChild(existingIframe);
     }
-
+    
     // Reemplaza el enlace de SoundCloud con el enlace de tu canción
     var soundcloudEmbedUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(urlCancion) + "&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
 
@@ -95,10 +95,11 @@ function reproducirCancion(urlCancion) {
     iframe.style.position = "fixed";
     iframe.style.bottom = "0";
     iframe.style.left = "0";
-
+    
     // Agrega el nuevo iframe al cuerpo del documento
     document.body.appendChild(iframe);
 }
+
 
 
 // Llama a cargarCatalogo para inicializar la página
@@ -106,6 +107,16 @@ cargarCatalogo();
 
 // Agrega un event listener para la búsqueda
 document.getElementById("busquedaInput").addEventListener("input", buscar);
+
+
+//********************************************
+
+function cerrarSesion(){
+    localStorage.removeItem("username")
+    window.location.href = '../html/login.html'
+}
+
+
 
 
 //******************************************************************************************* */
@@ -124,8 +135,10 @@ for (let i = 0; i < listItems.length; i++) {
   const btnAgregar = document.createElement("button");
   btnAgregar.innerHTML = "Agregar a mi playlist";
 
-  btnAgregar.addEventListener('click', (e)=>{
-    agregarAplaylist(e);
+  btnAgregar.addEventListener('click', () =>{
+      
+      agregarAplaylist();
+
   })
   
   // Agregar el botón como hijo del elemento li
@@ -136,36 +149,55 @@ for (let i = 0; i < listItems.length; i++) {
 
 
 
-//******FUNCIONES */
+//******FUNCIONES ****/
 
 
+function agregarAplaylist() {
+    console.log("sisi");
 
-
-function agregarAplaylist(e) {
-    const boton = e.target;
-    const cancion = boton.parentElement;
-    const nombreCancion = cancion.querySelector("li").textContent;
-    
-    // Aquí puedes agregar el código necesario para agregar la canción a tu playlist
-    // Por ejemplo, puedes utilizar localStorage para guardar la canción en una lista persistente
-  
-    console.log("Canción agregada a la playlist:", nombreCancion);}
-
+   // const cancion = cancion.target.dataset.cancion;
+    const nombreCancion = localStorage.getItem("canciones");
+    console.log(nombreCancion);
+    const playlist = sessionStorage.getItem("playlist") || [];
+    console.log(playlist);
     
     
-    // function agregarAplaylist(e){
-    //     console.log("esta ok ")
-    //      if (e.target.li === "agregaCancion") {
-    //         console.log("si funciona")
-    //         const cancion = e.target.textContent;
-    //         // Aquí guardamos la canción en el Session Storage
-    //         let playlist = JSON.parse(sessionStorage.getItem("playlist")) || [];
-    //         playlist.push(cancion);
-    //         sessionStorage.setItem("playlist", JSON.stringify(playlist));
-    //     }
-    //     else{
-    //         console.log("esta mal")
-    //     }
+    const cancionEnPlaylist = canciones.find(cancion => cancion.codigo === nombreCancion);
+    console.log(cancionEnPlaylist)
+            
+    playlist.push(cancionEnPlaylist);
+    console.log("coincide y se guarda")
+    mostrarPlaylist();
+
+
+        
+   
+}
+
+function mostrarPlaylist (){
+
+
+    // Seleccionar el elemento detalleCancion
+    const detalleCancion = document.getElementById("playlist");
+   
     
-       
-    // }
+
+    console.log(detalleCancion)
+
+
+    for (let i=0; i< playlist.length; i++){
+        const cancion = playlist[i];
+        const cancionEnPlaylist = document.createElement ("li");
+        cancionEnPlaylist.textContent = cancion;
+        playListDiv.appendChild (cancionEnPlaylist);
+        
+
+}}
+
+
+
+const soundcloudEmbedUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(urlCancion) + "&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
+
+console.log(soundcloudEmbedUrl)
+
+

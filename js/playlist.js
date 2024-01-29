@@ -153,7 +153,7 @@ for (let i = 0; i < listItems.length; i++) {
 
 
 function agregarAplaylist() {
-    console.log("sisi");
+    
 
    // const cancion = cancion.target.dataset.cancion;
     const nombreCancion = localStorage.getItem("canciones");

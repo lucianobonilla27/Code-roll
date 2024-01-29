@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/styles404.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="icon" href="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg">
-    <title>Detalle de Canción</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planes disponibles</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/relleno.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="bg-dark">
-    <!-- Inicio header -->
+<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-gradient">
             <div class="container-fluid">
@@ -40,7 +37,7 @@
                                 <a class="nav-link" href="#">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="./relleno.html">Servicios</a>
+                                <a class="nav-link" href="#">Servicios</a>
                             </li>
                             <li class="nav-item">
                                 <a href=""><button class="btn btn-dark" type="button">Iniciar sesión</button></a>
@@ -51,15 +48,36 @@
             </div>
         </nav>
     </header>
-    <!-- Fin de header -->
-    <main class="container mt-5 text-light">
-        <div id="detalleCancion">
-            <!-- Aquí se cargarán los detalles de la canción seleccionada -->
+    <main>
+    <div class="container mt-5">
+        <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="plan-card purple">
+              <h3>Premium Simple</h3>
+              <ul class="plan-features">
+                <li>1 cuenta Premium verificada</li>
+                <li>Descuento válido solo por este mes</li>
+                <li>Cancelas cuando quieras</li>
+              </ul>
+              <p class="plan-price">329 ARS*** al mes</p>
+              <button class="btn btn-dark select-plan">Seleccionar</button>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4">
+            <div class="plan-card yellow">
+              <h3>Premium Duo</h3>
+              <ul class="plan-features">
+                <li>2 cuentas Premium</li>
+                <li>Cancelas cuando quieras</li>
+              </ul>
+              <p class="plan-price">799 ARS*** al mes</p>
+              <button class="btn btn-dark select-plan">Seleccionar</button>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="text-light text-center my-5 py-3">
+      <footer class="text-light text-center my-5 py-3">
         <p>
             <a href="#" class="text-light">Acerca de nosotros</a>
             <span class="mx-2">|</span>
@@ -73,8 +91,6 @@
             </figure>
         </p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="../js/detalle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-
 </html>

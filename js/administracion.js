@@ -42,32 +42,46 @@ const Administracion = {
             this.canciones[index] = nuevaCancion;
             this.actualizarTabla();
             this.guardarCancionesEnLocalStorage();
-            this.cerrarFormularioCancion(); // Cerrar el formulario después de editar
+
         }
+    },
+
+    abrirModalConfirmarEliminar: function (codigo) {
+
+
+        const modal = new bootstrap.Modal(document.getElementById('confirmarEliminarModal'));
+        modal.show();
+
+        const confirmarEliminarButton = document.getElementById('confirmarEliminarButton');
+        confirmarEliminarButton.onclick = () => this.eliminarCancion(codigo);
     },
 
     eliminarCancion: function (codigo) {
         this.canciones = this.canciones.filter(cancion => cancion.codigo !== codigo);
-        this.actualizarTabla();
         this.guardarCancionesEnLocalStorage();
+        this.actualizarTabla();
+
+
     },
 
+
+
     guardarCancion: function () {
-        
+
         const titulo = document.getElementById('titulo').value;
         const artista = document.getElementById('artista').value;
         const categoria = document.getElementById('categoria').value;
         const imagenUrl = document.getElementById('imagenUrl').value;
         const duracion = document.getElementById('duracion').value;
         const cancionUrl = document.getElementById('cancionUrl').value;
-    
-        
+
+
         if (!titulo || !artista || !categoria || !imagenUrl || !duracion || !cancionUrl) {
-            alert('Por favor, complete todos los campos.'); 
+            alert('Por favor, complete todos los campos.');
             return;
         }
-    
-       
+
+
         const nuevaCancion = {
             codigo: Cancion.generarCodigo(),
             titulo: titulo,
@@ -77,85 +91,89 @@ const Administracion = {
             duracion: duracion,
             cancionUrl: cancionUrl
         };
-    
-        
+
+
         this.agregarCancion(nuevaCancion);
         this.limpiarFormulario();
     },
-    
+
 
     actualizarTabla: function () {
         const adminTableBody = document.getElementById('adminTableBody');
         if (adminTableBody) {
             adminTableBody.innerHTML = '';
-    
+
             this.canciones.forEach(cancion => {
                 const row = adminTableBody.insertRow();
                 row.insertCell(0).textContent = cancion.codigo;
                 row.insertCell(1).textContent = cancion.titulo;
                 row.insertCell(2).textContent = cancion.artista;
                 row.insertCell(3).textContent = cancion.categoria;
-    
+
                 const imagenCell = row.insertCell(4);
                 const imagen = document.createElement('img');
                 imagen.src = cancion.imagenUrl;
                 imagen.alt = cancion.titulo;
                 imagen.classList.add('imagen-cancion');
                 imagenCell.appendChild(imagen);
-    
+
                 const accionesCell = row.insertCell(5);
-    
+
                 // Botón Reproducir
                 const reproducirButton = document.createElement('button');
                 reproducirButton.textContent = 'Reproducir';
                 reproducirButton.classList.add('btn', 'btn-success', 'btn-sm');
                 reproducirButton.onclick = () => this.reproducirCancion(cancion.cancionUrl);
                 accionesCell.appendChild(reproducirButton);
-    
+
                 // Botón Editar
                 const editarButton = document.createElement('button');
                 editarButton.textContent = 'Editar';
                 editarButton.classList.add('btn', 'btn-warning', 'btn-sm');
                 editarButton.onclick = () => this.abrirFormularioEditar(cancion);
                 accionesCell.appendChild(editarButton);
-    
+
                 // Botón Eliminar
                 const eliminarButton = document.createElement('button');
                 eliminarButton.textContent = 'Eliminar';
                 eliminarButton.classList.add('btn', 'btn-danger', 'btn-sm');
-                eliminarButton.onclick = () => this.eliminarCancion(cancion.codigo);
+                eliminarButton.onclick = () => this.abrirModalConfirmarEliminar(cancion.codigo);
                 accionesCell.appendChild(eliminarButton);
             });
         }
     },
-    
+
     reproducirCancion: function (urlCancion) {
         // Elimina cualquier iframe existente
         var existingIframe = document.getElementById('soundcloudIframe');
         if (existingIframe) {
             existingIframe.parentNode.removeChild(existingIframe);
         }
-    
+
         // Reemplaza el enlace de SoundCloud con el enlace de tu canción
         var soundcloudEmbedUrl = "https://w.soundcloud.com/player/?url=" + encodeURIComponent(urlCancion) + "&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true";
-    
+
         // Crea un nuevo iframe para el widget de SoundCloud
         var iframe = document.createElement('iframe');
         iframe.id = 'soundcloudIframe';
         iframe.width = "100%";
-        iframe.height = "300";
-        iframe.frameBorder = "no";
+        iframe.height = "100";
         iframe.allow = "autoplay";
         iframe.src = soundcloudEmbedUrl;
-    
+
+        // Establece la posición fija y la alineación en la parte inferior
+        iframe.style.position = "fixed";
+        iframe.style.bottom = "0";
+        iframe.style.left = "0";
+
         // Agrega el nuevo iframe al cuerpo del documento
         document.body.appendChild(iframe);
     },
-    
-    
+
+
 
     abrirFormularioEditar: function (cancion) {
-        
+
         document.getElementById('tituloE').value = cancion.titulo;
         document.getElementById('artistaE').value = cancion.artista;
         document.getElementById('categoriaE').value = cancion.categoria;
@@ -163,35 +181,35 @@ const Administracion = {
         document.getElementById('duracionE').value = cancion.duracion;
         document.getElementById('cancionUrlE').value = cancion.cancionUrl;
 
-        
+
         const modal = new bootstrap.Modal(document.getElementById('editarModal'));
         modal.show();
 
-        
+
         document.getElementById('guardarButton').onclick = () => this.guardarEdicionCancion(cancion.codigo);
 
-        
-        document.getElementById('cancelarButton').onclick = () => this.cerrarFormularioCancion();
+
+
     },
 
     guardarEdicionCancion: function (codigo) {
-        
+
         const titulo = document.getElementById('tituloE').value.trim();
         const artista = document.getElementById('artistaE').value.trim();
         const categoria = document.getElementById('categoriaE').value.trim();
         const imagenUrl = document.getElementById('imagenUrlE').value.trim();
         const duracion = document.getElementById('duracionE').value.trim();
         const cancionUrl = document.getElementById('cancionUrlE').value.trim();
-    
+
         // Realizar validaciones
         if (!titulo || !artista || !categoria || !imagenUrl || !duracion || !cancionUrl) {
-            alert('Por favor, complete todos los campos.'); 
+            alert('Por favor, complete todos los campos.');
             return;
         }
-    
-        
-    
-        
+
+
+
+
         const nuevaCancion = {
             codigo,
             titulo,
@@ -201,14 +219,15 @@ const Administracion = {
             duracion,
             cancionUrl,
         };
-    
-        
+
+
         this.editarCancion(codigo, nuevaCancion);
-    
-      
-        this.cerrarFormularioCancion();
+
     },
-    
+
+
+
+
 };
 
 // Cargar canciones almacenadas en localStorage al cargar la página

@@ -106,7 +106,12 @@ function updateAdminPanel() {
 
         users.forEach(user => {
             const row = userTableBody.insertRow();
-            row.insertCell(0).textContent = user.name;
+            if(user.name == "Admin" || user.name == "Invitado"){
+                row.insertCell(0).textContent = user.name;
+            }
+            else{
+                row.insertCell(0).textContent = user.username;
+            }
             row.insertCell(1).textContent = user.email;
 
             const deleteButton = document.createElement('button');

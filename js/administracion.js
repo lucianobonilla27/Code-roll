@@ -281,3 +281,65 @@ if (Administracion.canciones.length === 0) {
 
 // Actualizar la tabla al cargar la página
 Administracion.actualizarTabla();
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const adminUser = { name: "Admin", email: "admin@example.com", password: "admin123", role: "admin" };
+    const guestUser = { name: "Invitado", email: "guest@example.com", password: "guest123", role: "guest" };
+
+    // Verificar si los usuarios ya existen antes de agregarlos
+    if (!getUserByEmail(adminUser.email)) {
+        saveUser(adminUser);
+    }
+
+    if (!getUserByEmail(guestUser.email)) {
+        saveUser(guestUser);
+    }
+
+    updateAdminPanel();
+});
+
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem('users')) || [];
+}
+
+function getUserByEmail(email) {
+    const users = getUsers();
+    return users.find(user => user.email === email);
+}
+
+function updateAdminPanel() {
+    const userTableBody = document.getElementById('userTableBody');
+    if (userTableBody) {
+        userTableBody.innerHTML = '';
+
+        const users = getUsers();
+
+        users.forEach(user => {
+            const row = userTableBody.insertRow();
+            if(user.name == "Admin" || user.name == "Invitado"){
+                row.insertCell(0).textContent = user.name;
+            }
+            else{
+                row.insertCell(0).textContent = user.username;
+            }
+            row.insertCell(1).textContent = user.email;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+            deleteButton.onclick = () => deleteUser(user.email);
+
+            const cell = row.insertCell(2);
+            cell.appendChild(deleteButton);
+        });
+    }
+}
+
+function deleteUser(email) {
+    let users = getUsers();
+    users = users.filter(user => user.email !== email);
+    localStorage.setItem('users', JSON.stringify(users));
+    updateAdminPanel();
+}

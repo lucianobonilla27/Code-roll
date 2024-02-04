@@ -14,7 +14,8 @@
 </head>
 
 <body>
-    <a href="administracion.html"><button class="btn btn-primary mb-3 boton" type="button">Administrar canciones</button></a>
+    <a href="administracion.html"><button class="btn btn-primary mb-3 boton" type="button">Administrar
+            canciones</button></a>
     <main>
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -39,7 +40,31 @@
                 </div>
             </div>
         </div>
+
     </main>
+
+    <!-- modal confirmacion eliminacion de usuario -->
+    <div id="deleteUserModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="deleteUserModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteUserModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar este usuario?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer class="text-light text-center my-5 py-3 bg-dark">
         <p>
@@ -48,11 +73,11 @@
             <a href="./404.html" class="text-light">Soporte</a>
             <span class="mx-2 text-light">|</span>
             <a href="./404.html" class="text-light">Comentarios</a>
-            <figure>
-                <a href="https://www.facebook.com" class="fa fa-facebook text-light"></a>
-                <a href="https://www.twitter.com" class="fa fa-twitter text-light"></a>
-                <a href="https://www.instagram.com" class="fa fa-instagram text-light"></a>
-            </figure>
+        <figure>
+            <a href="https://www.facebook.com" class="fa fa-facebook text-light"></a>
+            <a href="https://www.twitter.com" class="fa fa-twitter text-light"></a>
+            <a href="https://www.instagram.com" class="fa fa-instagram text-light"></a>
+        </figure>
         </p>
     </footer>
 

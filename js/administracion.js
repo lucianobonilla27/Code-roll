@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if (!isAuthenticated()) {
         // Redireccionar o tomar alguna acción si el usuario no está autenticado
         window.location.href = '../index.html';
@@ -293,7 +293,7 @@ if (Administracion.canciones.length === 0) {
 Administracion.actualizarTabla();
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const adminUser = { name: "Admin", email: "admin@example.com", password: "admin123", role: "admin" };
     const guestUser = { name: "Invitado", email: "guest@example.com", password: "guest123", role: "guest" };
 
@@ -328,10 +328,9 @@ function updateAdminPanel() {
 
         users.forEach(user => {
             const row = userTableBody.insertRow();
-            if(user.name == "Admin" || user.name == "Invitado"){
+            if (user.name == "Admin" || user.name == "Invitado") {
                 row.insertCell(0).textContent = user.name;
-            }
-            else{
+            } else {
                 row.insertCell(0).textContent = user.username;
             }
             row.insertCell(1).textContent = user.email;
@@ -339,7 +338,7 @@ function updateAdminPanel() {
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Eliminar';
             deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
-            deleteButton.onclick = () => deleteUser(user.email);
+            deleteButton.onclick = () => showDeleteModal(user.email);
 
             const cell = row.insertCell(2);
             cell.appendChild(deleteButton);
@@ -347,10 +346,26 @@ function updateAdminPanel() {
     }
 }
 
+function showDeleteModal(email) {
+    const modal = document.getElementById('deleteUserModal');
+    const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+
+    // Configura el manejador de eventos para el botón de confirmación
+    confirmDeleteButton.onclick = () => deleteUser(email);
+
+    // Muestra el modal
+    $(modal).modal('show');
+}
+
 function deleteUser(email) {
     let users = getUsers();
     users = users.filter(user => user.email !== email);
     localStorage.setItem('users', JSON.stringify(users));
+
+    // Oculta el modal después de eliminar al usuario
+    const modal = document.getElementById('deleteUserModal');
+    $(modal).modal('hide');
+
     updateAdminPanel();
 }
 

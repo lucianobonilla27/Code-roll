@@ -29,7 +29,7 @@ formRegis.addEventListener('submit', (e) => {
                 bandera = 1
             }
 
-            users.push({username: username, email: email, password: password})
+            users.push({username: username, email: email.toLowerCase(), password: password})
             localStorage.setItem("users", JSON.stringify(users))
 
             if(bandera !== 1){

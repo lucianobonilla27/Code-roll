@@ -20,6 +20,7 @@ formLog.addEventListener('submit', (e) => {
 
             if(email=== "admin@gmail.com" && password === "admin"){
                 window.location.href = "../html/administracion.html"
+                sessionStorage.setItem('token', 'admin');
             }
 
             const users = JSON.parse(localStorage.getItem("users")) || []
@@ -28,10 +29,10 @@ formLog.addEventListener('submit', (e) => {
 
             if(userLogued || userValid){
                 alert('Bienvenido')
-                window.location.href = "../html/principal.html"
+                window.location.href = "../index.html"
             }
             else{
-                alert('pass o usu mal ingresado')
+                alert('email o contraseña incorrectos')
             }
             
             
@@ -45,6 +46,7 @@ formLog.addEventListener('submit', (e) => {
 
 function cerrarSesion(){
     localStorage.removeItem("username")
+    sessionStorage.removeItem('token');
     window.location.href = '../index.html'
 }
 

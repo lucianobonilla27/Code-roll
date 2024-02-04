@@ -19,10 +19,12 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-gradient">
             <div class="container-fluid">
                 <div class="navbar-brand me-lg-5">
-                    <a class="d-lg-none" href="../index.html"><img src="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg"
-                            class="logoImagen sombra-verde" alt="" height 75></a>
-                    <a class="d-none d-lg-block" href="../index.html"><img src="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg"
-                            class="logoImagen sombra-verde" alt="" height 75></a>
+                    <a class="d-lg-none" href="../index.html"><img
+                            src="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg" class="logoImagen sombra-verde"
+                            alt="" height 75></a>
+                    <a class="d-none d-lg-block" href="../index.html"><img
+                            src="../src/img/cd0ab3c9-8076-46e7-a86e-0933f5f6e2d5.jpg" class="logoImagen sombra-verde"
+                            alt="" height 75></a>
                 </div>
                 <div class="mx-lg-auto">
                     <a class="nombrePagina navbar-brand" href="../index.html">CODE&ROLL</a>
@@ -41,8 +43,9 @@
                                 <a class="nav-link" href="./relleno.html">Servicios</a>
                             </li>
                             <li class="nav-item">
-                                <button class="btn btn-dark" type="button" onclick="cerrarSesion()">Cerrar sesión</button>
-                        </li>
+                                <button class="btn btn-dark" type="button" onclick="cerrarSesion()">Cerrar
+                                    sesión</button>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -52,10 +55,11 @@
 
     <div class="container mt-5">
         <h2 class="text-center">Página de Administración</h2>
-        <button  class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#agregarModal">
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#agregarModal">
             Agregar Canción
         </button>
-        <a href="administracionUsuarios.html"><button class="btn btn-primary mb-3" type="button">Administrar usuarios</button></a>
+        <a href="administracionUsuarios.html"><button class="btn btn-primary mb-3" type="button">Administrar
+                usuarios</button></a>
         <div class="table-responsive">
             <table class="table table-dark">
                 <thead>
@@ -87,27 +91,27 @@
                     <form id="agregarForm">
                         <div class="form-group">
                             <label for="titulo">Título:</label>
-                            <input type="text" class="form-control" id="titulo" required>
+                            <input type="text" class="form-control" id="titulo" required maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="artista">Artista:</label>
-                            <input type="text" class="form-control" id="artista" required>
+                            <input type="text" class="form-control" id="artista" required maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="categoria">Categoría:</label>
-                            <input type="text" class="form-control" id="categoria" required>
+                            <input type="text" class="form-control" id="categoria" required maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="imagenUrl">URL de la Imagen:</label>
-                            <input type="text" class="form-control" id="imagenUrl" required>
+                            <input type="text" class="form-control" id="imagenUrl" required maxlength="160">
                         </div>
                         <div class="form-group">
                             <label for="duracion">Duración:</label>
-                            <input type="text" class="form-control" id="duracion" required>
+                            <input type="text" class="form-control" id="duracion" required maxlength="5">
                         </div>
                         <div class="form-group">
                             <label for="cancionUrl">URL de la Canción:</label>
-                            <input type="text" class="form-control" id="cancionUrl" required>
+                            <input type="text" class="form-control" id="cancionUrl" required maxlength="160">
                         </div>
 
                     </form>
@@ -133,27 +137,27 @@
                     <form id="cancionForm">
                         <div class="form-group">
                             <label for="titulo">Título:</label>
-                            <input type="text" class="form-control" id="tituloE" required>
+                            <input type="text" class="form-control" id="titulo" required maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="artista">Artista:</label>
-                            <input type="text" class="form-control" id="artistaE" required>
+                            <input type="text" class="form-control" id="artista" required maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="categoria">Categoría:</label>
-                            <input type="text" class="form-control" id="categoriaE" required>
+                            <input type="text" class="form-control" id="categoria" required maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="imagenUrl">URL de la Imagen:</label>
-                            <input type="text" class="form-control" id="imagenUrlE" required>
+                            <input type="text" class="form-control" id="imagenUrl" required maxlength="160">
                         </div>
                         <div class="form-group">
                             <label for="duracion">Duración:</label>
-                            <input type="text" class="form-control" id="duracionE" required>
+                            <input type="text" class="form-control" id="duracion" required maxlength="5">
                         </div>
                         <div class="form-group">
                             <label for="cancionUrl">URL de la Canción:</label>
-                            <input type="text" class="form-control" id="cancionUrlE" required>
+                            <input type="text" class="form-control" id="cancionUrl" required maxlength="160">
                         </div>
                     </form>
                     <div class="modal-footer">
@@ -170,7 +174,7 @@
     <!-- Modal Confirmar Eliminar -->
     <div class="modal fade" id="confirmarEliminarModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bg-black">
                 <div class="modal-header">
                     <h5 class="modal-title">Confirmar Eliminación</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

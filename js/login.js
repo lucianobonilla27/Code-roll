@@ -32,7 +32,7 @@ formLog.addEventListener('submit', (e) => {
                 window.location.href = "../index.html"
             }
             else{
-                alert('pass o usu mal ingresado')
+                alert('email o contraseña incorrectos')
             }
             
             

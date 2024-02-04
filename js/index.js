@@ -50,7 +50,19 @@ function buscar() {
         if (cancion.titulo.toLowerCase().includes(busquedaInput) || cancion.artista.toLowerCase().includes(busquedaInput)) {
             const li = document.createElement("li");
             li.className = "cancionItem";
-            li.innerHTML = `<strong>${cancion.titulo}</strong> - ${cancion.artista}`;
+
+            // Crea un enlace solo para el título de la canción
+            const enlace = document.createElement("a");
+            enlace.href = `../html/detalle.html?codigo=${cancion.codigo}`;
+            enlace.innerHTML = `<strong>${cancion.titulo}</strong>`; // Contenido del enlace es solo el título
+
+            // Agrega el enlace al li
+            li.appendChild(enlace);
+
+            // Agrega el nombre del artista al li
+            const artistaSpan = document.createElement("span");
+            artistaSpan.innerHTML = ` - ${cancion.artista}`;
+            li.appendChild(artistaSpan);
 
             const boton = document.createElement("button");
             boton.textContent = 'Reproducir';
@@ -62,17 +74,12 @@ function buscar() {
 
             li.appendChild(boton);
             catalogoCanciones.appendChild(li);
-
-            // Vincula el enlace al detalle de la canción
-            const enlace = document.createElement("a");
-            enlace.href = `../html/detalle.html?codigo=${cancion.codigo}`;
-            enlace.innerHTML = li.innerHTML; // Copia el contenido del li al enlace
-            li.innerHTML = ""; // Limpia el contenido del li
-            li.appendChild(enlace);
         }
     }
 }
- 
+
+
+
 
 // Reproduce la canción utilizando un widget de SoundCloud
 function reproducirCancion(urlCancion) {

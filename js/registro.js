@@ -33,7 +33,7 @@ formRegis.addEventListener('submit', (e) => {
             localStorage.setItem("users", JSON.stringify(users))
 
             if(bandera !== 1){
-                alert('registro god')
+                alert('Usuario registrado con éxito')
             }
             
         })

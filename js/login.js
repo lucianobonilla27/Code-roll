@@ -22,6 +22,8 @@ formLog.addEventListener('submit', async (e) => {
             if (email === "admin@gmail.com" && password === "admin") {
                 window.location.href = "../html/administracion.html";
                 sessionStorage.setItem('token', 'admin');
+                
+                
             }
 
             const users = JSON.parse(localStorage.getItem("users")) || [];

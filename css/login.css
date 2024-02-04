@@ -1,4 +1,4 @@
-main{
+main {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -6,17 +6,17 @@ main{
     height: 50vh;
 }
 
-p{
+p {
     color: white;
 }
 
-a{
+a {
     color: #1DB954 !important;
     text-decoration: none !important;
 
 }
 
-#formLogin{
+#formLogin {
     background-color: #121212 !important;
     display: flex;
     flex-direction: column;
@@ -28,7 +28,7 @@ a{
     color: white;
 }
 
-#formRegis{
+#formRegis {
     background-color: #121212 !important;
     display: flex;
     flex-direction: column;
@@ -40,11 +40,11 @@ a{
     color: white;
 }
 
-input{
+input {
     border: 1px solid black;
 }
 
-button{
+button {
     border: 1px solid black;
     height: 2.5vw;
     width: 8vw;
@@ -69,17 +69,19 @@ body {
     background-color: #232323;
 }
 
-.navbar-brand, .nav-link {
+.navbar-brand,
+.nav-link {
     color: #ffffff;
     transition: color 0.5s;
 }
 
-.navbar-brand:hover, .nav-link:hover {
+.navbar-brand:hover,
+.nav-link:hover {
     color: #1DB954;
 }
 
 .logoImagen {
-    height: 75px; 
+    height: 75px;
     width: auto;
     object-fit: contain;
     margin-right: 10px;
@@ -133,9 +135,9 @@ body {
     text-align: center;
     text-decoration: none;
     color: #1DB954;
-  }
+}
 
-  .fa {
+.fa {
     transition: transform 0.3s ease;
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -150,7 +152,9 @@ body {
 }
 
 footer {
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     font-size: 20px;
     text-align: center;
     padding: 20px 0;
@@ -159,9 +163,9 @@ footer {
 }
 
 .img-cancion {
-    max-width: 100%;  
-    height: auto; 
-    width: 300px; 
+    max-width: 100%;
+    height: auto;
+    width: 300px;
     margin-bottom: 1em;
     border-radius: 8px;
-}   
+}

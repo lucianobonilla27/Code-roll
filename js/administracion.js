@@ -282,6 +282,24 @@ if (Administracion.canciones.length === 0) {
             duracion: "3:51",
             cancionUrl: "https://soundcloud.com/maroon-5/payphone?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
         },
+        {
+            codigo: Cancion.generarCodigo(),
+            titulo: "Hotel California",
+            artista: "Eagles",
+            categoria: "Rock",
+            imagenUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkEG90NrK8NYzs2DovQGUsJMMliZ4eSEWHEQ&usqp=CAU",
+            duracion: "6:30",
+            cancionUrl: "https://soundcloud.com/emblem3/hotel-california?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        },
+        {
+            codigo: Cancion.generarCodigo(),
+            titulo: "Despacito",
+            artista: "Luis Fonsi (feat. Daddy Yankee)",
+            categoria: "Reggaeton",
+            imagenUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVL6Q4dT-QwGad9f40TbLRrmj1Rs6oeNTwDA&usqp=CAU",
+            duracion: "4:41",
+            cancionUrl: "https://soundcloud.com/dkdavid1/luis-fonsi-despacito-ft-daddy-yankee-original-audio-from-youtube?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+        },
     ];
 
     cancionesEjemplo.forEach(nuevaCancion => {

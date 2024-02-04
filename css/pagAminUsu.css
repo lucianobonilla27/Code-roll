@@ -58,10 +58,12 @@ th {
 }
 
 footer {
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     font-size: 20px;
     text-align: center;
     padding: 20px 0;
     background-color: #232323;
     color: #ffffff;
-}
+  }

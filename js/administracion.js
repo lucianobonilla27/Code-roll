@@ -354,6 +354,21 @@ function deleteUser(email) {
     updateAdminPanel();
 }
 
+function saveUser(user) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+}
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem('users')) || [];
+}
+
+function getUserByEmail(email) {
+    const users = getUsers();
+    return users.find(user => user.email === email);
+}
+
 
 // Función para verificar si el usuario está autenticado
 function isAuthenticated() {

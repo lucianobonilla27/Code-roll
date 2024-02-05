@@ -82,11 +82,15 @@ function buscar() {
 
 
 // Reproduce la canción utilizando un widget de SoundCloud
+// Declarar una variable global para almacenar la referencia al botón
+var closeButton;
+
 function reproducirCancion(urlCancion) {
     // Elimina cualquier iframe existente
     var existingIframe = document.getElementById('soundcloudIframe');
     if (existingIframe) {
         existingIframe.parentNode.removeChild(existingIframe);
+        ocultarBotonCerrar();
     }
 
     // Reemplaza el enlace de SoundCloud con el enlace de tu canción
@@ -107,7 +111,35 @@ function reproducirCancion(urlCancion) {
 
     // Agrega el nuevo iframe al cuerpo del documento
     document.body.appendChild(iframe);
+
+    // Agrega un botón de cerrar en la parte inferior derecha del iframe
+    closeButton = document.createElement('button');
+    closeButton.textContent = 'Cerrar Reproductor';
+    closeButton.classList.add('btn', 'btn-danger');
+    closeButton.style.position = 'fixed';
+    closeButton.style.bottom = '10px';
+    closeButton.style.right = '10px';
+    closeButton.onclick = function () {
+        cerrarIframe();
+    };
+    document.body.appendChild(closeButton);
 }
+
+function cerrarIframe() {
+    var existingIframe = document.getElementById('soundcloudIframe');
+    if (existingIframe) {
+        existingIframe.parentNode.removeChild(existingIframe);
+        ocultarBotonCerrar();
+    }
+}
+
+function ocultarBotonCerrar() {
+    if (closeButton) {
+        closeButton.style.display = 'none';
+    }
+}
+
+
 
 
 // Llama a cargarCatalogo para inicializar la página
